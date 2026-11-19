@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+.exam_state.json
+traces/
+subject/
+grademe/*.py

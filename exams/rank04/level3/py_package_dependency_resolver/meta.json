@@ -1,0 +1,5 @@
+{
+  "name": "py_package_dependency_resolver",
+  "file": "py_package_dependency_resolver.py",
+  "function": "package_dependency_resolver"
+}
