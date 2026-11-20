@@ -1,0 +1,8 @@
+{
+  "name": "ft_list_size",
+  "file": "ft_list_size.c",
+  "function": "ft_list_size",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

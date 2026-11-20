@@ -1,0 +1,8 @@
+{
+  "name": "max",
+  "file": "max.c",
+  "function": "max",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

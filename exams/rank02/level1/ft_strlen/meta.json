@@ -1,0 +1,8 @@
+{
+  "name": "ft_strlen",
+  "file": "ft_strlen.c",
+  "function": "ft_strlen",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

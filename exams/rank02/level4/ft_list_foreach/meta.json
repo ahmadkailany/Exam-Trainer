@@ -1,0 +1,8 @@
+{
+  "name": "ft_list_foreach",
+  "file": "ft_list_foreach.c",
+  "function": "ft_list_foreach",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

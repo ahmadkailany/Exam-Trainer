@@ -1,0 +1,10 @@
+{
+  "name": "first_word",
+  "file": "first_word.c",
+  "function": "first_word",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

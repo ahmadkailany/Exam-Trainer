@@ -1,0 +1,6 @@
+{
+  "name": "py_bracket_validator",
+  "file": "py_bracket_validator.py",
+  "function": "bracket_validator",
+  "language": "Python"
+}

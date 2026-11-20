@@ -1,0 +1,29 @@
+Assignment name  : py_inter
+Expected files   : py_inter.py
+Allowed functions: None (no imports - only Python built-ins)
+--------------------------------------------------------------------------------
+
+Write a function that returns a string with the characters that appear
+in both strings, without repetitions. Characters are added in the order
+they appear in the first string.
+
+Function signature:
+
+    def inter(s1: str, s2: str) -> str:
+
+Examples:
+
+    >>> inter("hello", "world")
+    "lo"
+
+    >>> inter("banana", "band")
+    "ban"
+
+    >>> inter("abcabc", "bc")
+    "bc"
+
+    >>> inter("abc", "xyz")
+    ""
+
+    >>> inter("", "abc")
+    ""

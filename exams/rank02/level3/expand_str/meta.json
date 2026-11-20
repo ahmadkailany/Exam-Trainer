@@ -1,0 +1,10 @@
+{
+  "name": "expand_str",
+  "file": "expand_str.c",
+  "function": "expand_str",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "ft_strcmp",
+  "file": "ft_strcmp.c",
+  "function": "ft_strcmp",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

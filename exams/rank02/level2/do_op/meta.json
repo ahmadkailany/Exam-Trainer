@@ -1,0 +1,12 @@
+{
+  "name": "do_op",
+  "file": "do_op.c",
+  "function": "do_op",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "atoi",
+    "printf",
+    "write"
+  ]
+}

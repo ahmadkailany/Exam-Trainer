@@ -1,0 +1,10 @@
+{
+  "name": "rev_print",
+  "file": "rev_print.c",
+  "function": "rev_print",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

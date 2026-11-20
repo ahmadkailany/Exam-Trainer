@@ -1,0 +1,12 @@
+#include <stdlib.h>
+int *ft_range(int start, int end)
+{
+	int n = (start > end ? start - end : end - start) + 1;
+	int *t = malloc(sizeof(int) * n);
+	int step = start > end ? -1 : 1;
+	if (!t)
+		return (NULL);
+	for (int i = 0; i < n; i++)
+		t[i] = start + i * step;
+	return (t);
+}

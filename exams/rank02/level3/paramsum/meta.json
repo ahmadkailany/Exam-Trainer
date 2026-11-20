@@ -1,0 +1,10 @@
+{
+  "name": "paramsum",
+  "file": "paramsum.c",
+  "function": "paramsum",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

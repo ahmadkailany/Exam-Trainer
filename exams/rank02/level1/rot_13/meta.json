@@ -1,0 +1,10 @@
+{
+  "name": "rot_13",
+  "file": "rot_13.c",
+  "function": "rot_13",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

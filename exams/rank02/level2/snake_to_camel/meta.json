@@ -1,0 +1,13 @@
+{
+  "name": "snake_to_camel",
+  "file": "snake_to_camel.c",
+  "function": "snake_to_camel",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "malloc",
+    "free",
+    "realloc",
+    "write"
+  ]
+}

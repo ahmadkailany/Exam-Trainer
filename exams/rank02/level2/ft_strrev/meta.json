@@ -1,0 +1,8 @@
+{
+  "name": "ft_strrev",
+  "file": "ft_strrev.c",
+  "function": "ft_strrev",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

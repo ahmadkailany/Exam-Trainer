@@ -1,0 +1,10 @@
+{
+  "name": "ft_split",
+  "file": "ft_split.c",
+  "function": "ft_split",
+  "language": "C",
+  "kind": "function",
+  "allowed": [
+    "malloc"
+  ]
+}

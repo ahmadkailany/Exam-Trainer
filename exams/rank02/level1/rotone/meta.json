@@ -1,0 +1,10 @@
+{
+  "name": "rotone",
+  "file": "rotone.c",
+  "function": "rotone",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

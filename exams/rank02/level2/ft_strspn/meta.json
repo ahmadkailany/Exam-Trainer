@@ -1,0 +1,8 @@
+{
+  "name": "ft_strspn",
+  "file": "ft_strspn.c",
+  "function": "ft_strspn",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

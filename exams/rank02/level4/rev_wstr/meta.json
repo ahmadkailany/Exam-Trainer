@@ -1,0 +1,12 @@
+{
+  "name": "rev_wstr",
+  "file": "rev_wstr.c",
+  "function": "rev_wstr",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write",
+    "malloc",
+    "free"
+  ]
+}

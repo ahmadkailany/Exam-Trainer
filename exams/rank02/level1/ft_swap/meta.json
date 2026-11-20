@@ -1,0 +1,8 @@
+{
+  "name": "ft_swap",
+  "file": "ft_swap.c",
+  "function": "ft_swap",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

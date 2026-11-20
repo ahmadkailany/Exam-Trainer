@@ -1,0 +1,10 @@
+{
+  "name": "str_capitalizer",
+  "file": "str_capitalizer.c",
+  "function": "str_capitalizer",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

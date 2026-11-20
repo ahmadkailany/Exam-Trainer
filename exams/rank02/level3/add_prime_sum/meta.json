@@ -1,0 +1,11 @@
+{
+  "name": "add_prime_sum",
+  "file": "add_prime_sum.c",
+  "function": "add_prime_sum",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write",
+    "exit"
+  ]
+}

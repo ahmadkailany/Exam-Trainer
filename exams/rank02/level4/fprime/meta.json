@@ -1,0 +1,11 @@
+{
+  "name": "fprime",
+  "file": "fprime.c",
+  "function": "fprime",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "printf",
+    "atoi"
+  ]
+}

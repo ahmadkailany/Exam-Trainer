@@ -1,0 +1,10 @@
+{
+  "name": "repeat_alpha",
+  "file": "repeat_alpha.c",
+  "function": "repeat_alpha",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "inter",
+  "file": "inter.c",
+  "function": "inter",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

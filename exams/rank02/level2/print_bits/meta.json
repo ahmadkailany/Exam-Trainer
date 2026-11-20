@@ -1,0 +1,10 @@
+{
+  "name": "print_bits",
+  "file": "print_bits.c",
+  "function": "print_bits",
+  "language": "C",
+  "kind": "function",
+  "allowed": [
+    "write"
+  ]
+}

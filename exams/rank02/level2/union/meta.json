@@ -1,0 +1,10 @@
+{
+  "name": "union",
+  "file": "union.c",
+  "function": "union",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

@@ -63,38 +63,53 @@ You can also grade from another terminal: `python examshell.py grademe` (or `.\g
 Other commands at the prompt: `subject`, `status` (level, points, timer, history), `clear`,
 `help`, `exit` or `b` (back to the menu - progress is saved, choose `r` to resume), `giveup`.
 
-## What the grader checks
-
-- File exists with the exact name, and defines the function.
-- **Forbidden functions** from the subject (e.g. `sorted()` / `.sort()` in merge_sorted_lists).
-  Subjects marked "Allowed functions: None" must not use any `import`.
-- Output must match exactly, **including type** (`True` ≠ `1`, list ≠ tuple).
-- Crashes, infinite loops (10s timeout) and slow algorithms on big inputs (6s) fail.
-- Your `print`s are ignored, and `if __name__ == "__main__":` test code is fine.
-
-Traces of each attempt are saved in `traces/`.
-
 ## Current content
 
-| Rank   | Level | Questions |
-|--------|-------|-----------|
-| rank04 (Python) | 1 | py_array_rotation_detector, py_constellation_mapper |
-|        | 2 | py_list_intersection_finder, py_merge_sorted_lists |
-|        | 3 | py_palindrome_partitioner, py_package_dependency_resolver |
-|        | 4 | py_sliding_window_maximum |
+| Rank | Language | Levels | Exercises |
+|---|---|---|---|
+| Rank 02 | C | 4 | 57 (12 / 20 / 15 / 10 per level) |
+| Rank 03 | Python | 6 | 14 |
+| Rank 04 | Python | 4 | 7 |
+
+Subjects come from [rank02](https://rank02.42exam.net/), [rank03](https://rank03.42exam.net/) and
+[rank04](https://rank04.42exam.net/) on 42exam.net.
+
+## What the grader checks
+
+**Python exercises** (`grademe/<name>.py`)
+- The file exists with the exact name and defines the function.
+- **Forbidden functions** from the subject (e.g. `sorted()` / `.sort()`).
+  Subjects marked "Allowed functions: None" must not use any `import`.
+- Output must match exactly, **including type** (`True` ≠ `1`, list ≠ tuple).
+- Crashes and infinite loops (10s timeout) fail. Some rank 04 subjects also test big inputs for speed.
+- Your `print`s are ignored, and `if __name__ == "__main__":` test code is fine.
+
+**C exercises** (`grademe/<name>.c`, plus your `.h` if the subject asks for one) - needs a C compiler
+(`cc`/`gcc`; Ubuntu: `sudo apt install build-essential`, Windows: [w64devkit](https://github.com/skeeto/w64devkit) or MSYS2).
+- Compiled with **`-Wall -Wextra -Werror`** - any warning is a failure, just like the exam.
+- **Allowed functions** are checked on the compiled object (`nm`): calling anything not listed fails.
+- **Programs** are run with many argument lists; **functions** are linked with a hidden test `main()`
+  (so your file must *not* contain a `main`).
+- Output is compared byte for byte with a reference solution and shown `| cat -e` style.
+- Segfaults, crashes and infinite loops (5s timeout) fail.
+
+Traces of each attempt are saved in `traces/`.
 
 ## Adding ranks / questions
 
 ```
+exams/<rankXX>/rank.json                 {"title", "language", "description"}
 exams/<rankXX>/level<N>/<question_name>/
     subject.txt   what the student sees
-    meta.json     {"name": ..., "file": "<expected file>", "function": ...}
+    meta.json     {"name", "file": "<expected file>", ...}
     tester.py     must define grade(student_file_path) -> Result
 ```
 
-Ranks and levels are discovered automatically. For Python function subjects,
-`tester.py` defines a `reference` solution and test `cases()` and calls
-`engine.pygrader.grade_function(...)` (see any rank04 tester). For C ranks later,
-a tester only needs to provide its own `grade()` (compile with gcc, compare output).
+Ranks and levels are discovered automatically.
+- **Python** subjects: `tester.py` defines a `reference` solution and test `cases()` and calls
+  `engine.pygrader.grade_function(...)`.
+- **C** subjects: `tester.py` calls `engine.cgrader.grade_dir(...)`, which uses `ref.c`
+  (reference solution), `tests.json` (argv lists), `driver.c` (test `main` for function exercises)
+  and `include/` (headers the subject provides). `meta.json` adds `kind` and `allowed`.
 
-> The `tester.py` files contain reference solutions - don't peek if you want a real exam feeling!
+> The exam folders contain the reference solutions - don't peek if you want a real exam feeling!

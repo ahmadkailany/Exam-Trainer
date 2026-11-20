@@ -1,0 +1,8 @@
+{
+  "name": "sort_int_tab",
+  "file": "sort_int_tab.c",
+  "function": "sort_int_tab",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

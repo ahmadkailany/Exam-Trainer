@@ -1,0 +1,11 @@
+{
+  "name": "search_and_replace",
+  "file": "search_and_replace.c",
+  "function": "search_and_replace",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write",
+    "exit"
+  ]
+}

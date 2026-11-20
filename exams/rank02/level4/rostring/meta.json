@@ -1,0 +1,12 @@
+{
+  "name": "rostring",
+  "file": "rostring.c",
+  "function": "rostring",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write",
+    "malloc",
+    "free"
+  ]
+}

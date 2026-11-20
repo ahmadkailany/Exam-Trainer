@@ -1,0 +1,6 @@
+{
+  "name": "py_echo_validator",
+  "file": "py_echo_validator.py",
+  "function": "echo_validator",
+  "language": "Python"
+}

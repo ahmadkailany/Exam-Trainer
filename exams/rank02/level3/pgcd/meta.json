@@ -1,0 +1,13 @@
+{
+  "name": "pgcd",
+  "file": "pgcd.c",
+  "function": "pgcd",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "printf",
+    "atoi",
+    "malloc",
+    "free"
+  ]
+}

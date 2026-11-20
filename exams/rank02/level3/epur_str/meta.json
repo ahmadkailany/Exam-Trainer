@@ -1,0 +1,10 @@
+{
+  "name": "epur_str",
+  "file": "epur_str.c",
+  "function": "epur_str",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

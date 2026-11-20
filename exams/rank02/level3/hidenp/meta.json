@@ -1,0 +1,10 @@
+{
+  "name": "hidenp",
+  "file": "hidenp.c",
+  "function": "hidenp",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

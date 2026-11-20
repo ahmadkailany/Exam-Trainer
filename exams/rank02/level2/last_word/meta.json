@@ -1,0 +1,10 @@
+{
+  "name": "last_word",
+  "file": "last_word.c",
+  "function": "last_word",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "reverse_bits",
+  "file": "reverse_bits.c",
+  "function": "reverse_bits",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

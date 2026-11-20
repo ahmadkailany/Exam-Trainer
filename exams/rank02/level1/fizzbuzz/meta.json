@@ -1,0 +1,10 @@
+{
+  "name": "fizzbuzz",
+  "file": "fizzbuzz.c",
+  "function": "fizzbuzz",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

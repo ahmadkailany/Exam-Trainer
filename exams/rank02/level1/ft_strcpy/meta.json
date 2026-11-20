@@ -1,0 +1,8 @@
+{
+  "name": "ft_strcpy",
+  "file": "ft_strcpy.c",
+  "function": "ft_strcpy",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

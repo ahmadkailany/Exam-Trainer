@@ -1,0 +1,8 @@
+{
+  "name": "is_power_of_2",
+  "file": "is_power_of_2.c",
+  "function": "is_power_of_2",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

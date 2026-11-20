@@ -1,0 +1,9 @@
+{
+  "name": "sort_list",
+  "file": "sort_list.c",
+  "function": "sort_list",
+  "language": "C",
+  "kind": "function",
+  "allowed": [],
+  "headers_first": true
+}

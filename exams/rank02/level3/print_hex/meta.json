@@ -1,0 +1,10 @@
+{
+  "name": "print_hex",
+  "file": "print_hex.c",
+  "function": "print_hex",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "swap_bits",
+  "file": "swap_bits.c",
+  "function": "swap_bits",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

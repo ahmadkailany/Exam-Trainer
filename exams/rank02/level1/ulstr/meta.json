@@ -1,0 +1,10 @@
+{
+  "name": "ulstr",
+  "file": "ulstr.c",
+  "function": "ulstr",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

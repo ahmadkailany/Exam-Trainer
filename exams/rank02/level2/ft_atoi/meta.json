@@ -1,0 +1,8 @@
+{
+  "name": "ft_atoi",
+  "file": "ft_atoi.c",
+  "function": "ft_atoi",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

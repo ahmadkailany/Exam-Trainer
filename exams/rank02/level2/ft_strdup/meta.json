@@ -1,0 +1,10 @@
+{
+  "name": "ft_strdup",
+  "file": "ft_strdup.c",
+  "function": "ft_strdup",
+  "language": "C",
+  "kind": "function",
+  "allowed": [
+    "malloc"
+  ]
+}

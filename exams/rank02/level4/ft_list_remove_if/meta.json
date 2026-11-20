@@ -1,0 +1,10 @@
+{
+  "name": "ft_list_remove_if",
+  "file": "ft_list_remove_if.c",
+  "function": "ft_list_remove_if",
+  "language": "C",
+  "kind": "function",
+  "allowed": [
+    "free"
+  ]
+}

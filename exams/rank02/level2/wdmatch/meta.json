@@ -1,0 +1,10 @@
+{
+  "name": "wdmatch",
+  "file": "wdmatch.c",
+  "function": "wdmatch",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

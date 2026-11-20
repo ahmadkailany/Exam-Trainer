@@ -1,0 +1,10 @@
+{
+  "name": "rstr_capitalizer",
+  "file": "rstr_capitalizer.c",
+  "function": "rstr_capitalizer",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}

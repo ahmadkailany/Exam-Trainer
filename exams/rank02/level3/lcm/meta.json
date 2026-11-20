@@ -1,0 +1,8 @@
+{
+  "name": "lcm",
+  "file": "lcm.c",
+  "function": "lcm",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

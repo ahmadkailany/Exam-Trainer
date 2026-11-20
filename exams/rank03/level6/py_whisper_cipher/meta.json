@@ -1,0 +1,6 @@
+{
+  "name": "py_whisper_cipher",
+  "file": "py_whisper_cipher.py",
+  "function": "whisper_cipher",
+  "language": "Python"
+}

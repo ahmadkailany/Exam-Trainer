@@ -1,0 +1,10 @@
+{
+  "name": "ft_rrange",
+  "file": "ft_rrange.c",
+  "function": "ft_rrange",
+  "language": "C",
+  "kind": "function",
+  "allowed": [
+    "malloc"
+  ]
+}

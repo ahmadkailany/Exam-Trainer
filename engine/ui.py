@@ -254,7 +254,8 @@ def level_menu(levels):
     table.add_column("Exercises")
     for i, (lv, qs) in enumerate(levels, 1):
         table.add_row(Text(f" {i} ", style=KEY_PURPLE), lv,
-                      Text("\n".join(f"- {q}" for q in qs), style="dim"))
+                      Text.assemble((f"{len(qs)} exercise{'s' if len(qs) != 1 else ''}: ", "bold"),
+                                    (", ".join(qs), "dim")))
     table.add_row(Text(" b ", style=KEY_YELLOW), Text(f"{I['back']}  back", style="yellow"), "")
     show(Rule(f"[bold]{I['train']} Train one exercise[/]  ·  choose a level", style=ACCENT2), table)
 
@@ -315,7 +316,16 @@ def subject(text, file_hint):
         if k.startswith("Assignment"):
             name = v
 
-    parts = [info_grid, Rule(style="grey35"), Text(desc)]
+    body = Text()
+    for line in desc.split("\n"):
+        if line.lstrip().startswith("$>"):          # shell example (C subjects)
+            body.append(line + "\n", style=f"bold {ACCENT}")
+        elif re.match(r"\s*(int|void|char|size_t|unsigned|t_list|typedef)\b.*[;{]\s*$", line) and "(" in line:
+            body.append(line + "\n", style="bold yellow")   # prototypes
+        else:
+            body.append(line + "\n")
+    body.rstrip()
+    parts = [info_grid, Rule(style="grey35"), body]
     if sig:
         parts += [Text(), Text("Function signature", style=f"bold {ACCENT}"),
                   Syntax(sig, "python", theme="monokai", background_color="default", word_wrap=True)]

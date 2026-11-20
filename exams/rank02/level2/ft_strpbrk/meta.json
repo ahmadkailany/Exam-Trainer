@@ -1,0 +1,8 @@
+{
+  "name": "ft_strpbrk",
+  "file": "ft_strpbrk.c",
+  "function": "ft_strpbrk",
+  "language": "C",
+  "kind": "function",
+  "allowed": []
+}

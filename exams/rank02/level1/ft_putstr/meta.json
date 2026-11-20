@@ -1,0 +1,10 @@
+{
+  "name": "ft_putstr",
+  "file": "ft_putstr.c",
+  "function": "ft_putstr",
+  "language": "C",
+  "kind": "function",
+  "allowed": [
+    "write"
+  ]
+}

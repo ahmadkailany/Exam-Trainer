@@ -1,0 +1,10 @@
+{
+  "name": "tab_mult",
+  "file": "tab_mult.c",
+  "function": "tab_mult",
+  "language": "C",
+  "kind": "program",
+  "allowed": [
+    "write"
+  ]
+}
