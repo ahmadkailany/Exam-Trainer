@@ -25,10 +25,25 @@ endif
 # The examshell itself never needs the venv bootstrap when started from here.
 RUN := $(VENV_PY) examshell.py
 
+# SYS_PY = the real system Python, never the one inside .venv.
+# If your terminal has the venv activated (VS Code does it automatically), `python` IS
+# .venv/Scripts/python.exe - and Windows cannot delete a running .exe, so `make fclean`
+# would break the venv half-way. sys._base_executable gives the interpreter the venv
+# was built from; `py -3` is the fallback when the venv is already broken.
+BASE_PY_CODE := import sys; print(getattr(sys, '_base_executable', sys.executable).replace(chr(92), '/'))
+SYS_PY := $(strip $(shell $(PYTHON) -c "$(BASE_PY_CODE)"))
+ifeq ($(SYS_PY),)
+    SYS_PY := $(strip $(shell py -3 -c "$(BASE_PY_CODE)"))
+endif
+ifeq ($(SYS_PY),)
+    SYS_PY := $(PYTHON)
+endif
+
 # Portable helpers (work with sh or cmd.exe as the make shell)
-RMTREE = $(PYTHON) -c "import shutil,sys; [shutil.rmtree(p, ignore_errors=True) for p in sys.argv[1:]]"
-RMPYC  = $(PYTHON) -c "import os,shutil; [shutil.rmtree(os.path.join(r,'__pycache__')) for r,d,f in os.walk('.') if '__pycache__' in d and '.venv' not in r]"
-RMFILE = $(PYTHON) -c "import os,sys; [os.remove(p) for p in sys.argv[1:] if os.path.isfile(p)]"
+RMTREE = "$(SYS_PY)" -c "import shutil,sys; [shutil.rmtree(p, ignore_errors=True) for p in sys.argv[1:]]"
+RMPYC  = "$(SYS_PY)" -c "import os,shutil; [shutil.rmtree(os.path.join(r,'__pycache__')) for r,d,f in os.walk('.') if '__pycache__' in d and '.venv' not in r]"
+RMFILE = "$(SYS_PY)" -c "import os,sys; [os.remove(p) for p in sys.argv[1:] if os.path.isfile(p)]"
+RMVENV = "$(SYS_PY)" -c "import os,shutil,sys; shutil.rmtree('$(VENV)', ignore_errors=True); os.path.exists('$(VENV)') and sys.exit('[$(NAME)] could not fully remove $(VENV) - close the programs/terminals that use it (or run: deactivate) and try again')"
 
 .DEFAULT_GOAL := run
 .PHONY: all run install grademe status subject version clean fclean re help
@@ -45,7 +60,7 @@ install: $(STAMP)
 
 $(STAMP): $(REQ)
 	@echo "[$(NAME)] creating virtual environment in $(VENV) ..."
-	@$(PYTHON) -m venv $(VENV)
+	@"$(SYS_PY)" -m venv $(VENV)
 	@echo "[$(NAME)] installing dependencies ..."
 	@$(VENV_PY) -m pip install --disable-pip-version-check -q -r $(REQ)
 	@$(VENV_PY) -c "open(r'$(STAMP)', 'w').close()"
@@ -75,8 +90,8 @@ clean:
 
 ## fclean     : clean + remove the venv and the saved exam progress (keeps grademe/)
 fclean: clean
-	@$(RMTREE) $(VENV)
 	@$(RMFILE) .exam_state.json
+	@$(RMVENV)
 	@echo "[$(NAME)] venv and progress removed"
 
 ## re         : fclean + install

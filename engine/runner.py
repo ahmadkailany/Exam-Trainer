@@ -1,9 +1,17 @@
-"""Child process: imports the student's file and runs the function on every case.
+"""Child process: imports the student's file and runs every test case.
 
-Usage: python runner.py <student_file> <function_name> <cases_file> <out_file>
+Usage: python runner.py <student_file> <default_function> <cases_file> <out_file>
 
 Runs in its own process so an infinite loop / crash / sys.exit in the student's
 code can never take down the examshell. Anything the student prints is swallowed.
+
+A case can be:
+  (arg, arg, ...)                                   -> default_function(*args)
+  {"call": "name", "args": [...]}                  -> name(*args)
+  {"pipe": ["f", "g"], "args": [...]}              -> [type(f(*args)).__name__, g(f(*args))]
+  {"cls": "Name", "init": [...], "ops": [[m, [args]], ...]}
+                                                    -> [obj.m(*args) for each op]
+     special op "__same__" [x, y]                   -> obj.find(x) == obj.find(y)
 """
 import ast
 import copy
@@ -12,6 +20,29 @@ import io
 import json
 import sys
 import traceback
+
+
+def execute(ns, case, default):
+    """Runs one case against a namespace (module or object with attributes). Shared with the grader."""
+    get = (lambda n: ns[n]) if isinstance(ns, dict) else (lambda n: getattr(ns, n))
+    if isinstance(case, dict):
+        if "call" in case:
+            return get(case["call"])(*copy.deepcopy(case["args"]))
+        if "pipe" in case:
+            f, g = (get(n) for n in case["pipe"])
+            mid = f(*copy.deepcopy(case["args"]))
+            return [type(mid).__name__, g(mid)]
+        if "cls" in case:
+            obj = get(case["cls"])(*copy.deepcopy(case.get("init", [])))
+            out = []
+            for name, args in case["ops"]:
+                if name == "__same__":
+                    out.append(obj.find(args[0]) == obj.find(args[1]))
+                else:
+                    out.append(getattr(obj, name)(*copy.deepcopy(args)))
+            return out
+        raise ValueError(f"bad case {case!r}")
+    return get(default)(*copy.deepcopy(case))
 
 
 def main():
@@ -32,15 +63,12 @@ def main():
             result["load_error"] = "Your file crashed while being imported:\n" + traceback.format_exc(limit=3)
             return result, out_path
 
-        func = getattr(module, func_name, None)
-        if not callable(func):
-            result["load_error"] = f"Function '{func_name}' not found in your file."
-            return result, out_path
-
-        for args in cases:
+        for case in cases:
             try:
-                got = func(*copy.deepcopy(args))
+                got = execute(module, case, func_name)
                 result["results"].append({"repr": repr(got)})
+            except AttributeError as e:
+                result["results"].append({"error": f"AttributeError: {e} (check the names in the subject)"})
             except BaseException as e:
                 result["results"].append({"error": f"{type(e).__name__}: {e}"})
         return result, out_path

@@ -70,16 +70,17 @@ Other commands at the prompt: `subject`, `status` (level, points, timer, history
 | Rank 02 | C | 4 | 57 (12 / 20 / 15 / 10 per level) |
 | Rank 03 | Python | 6 | 14 |
 | Rank 04 | Python | 4 | 7 |
+| Rank 05 | Python | 3 | 7 |
+| Rank 06 | Python | 2 | 9 (classes: Trie, Union-Find, LRU cache, Min-heap...) |
 
-Subjects come from [rank02](https://rank02.42exam.net/), [rank03](https://rank03.42exam.net/) and
-[rank04](https://rank04.42exam.net/) on 42exam.net.
 
 ## What the grader checks
 
 **Python exercises** (`grademe/<name>.py`)
-- The file exists with the exact name and defines the function.
-- **Forbidden functions** from the subject (e.g. `sorted()` / `.sort()`).
-  Subjects marked "Allowed functions: None" must not use any `import`.
+- The file exists with the exact name and defines every function / class the subject asks for.
+- **Forbidden functions** from the subject (e.g. `sorted()`, `json`, `heapq`, `collections.OrderedDict`).
+  Subjects marked "Allowed functions: None" must not use any `import` (`typing` is always fine).
+- Classes (rank 06) are tested with sequences of method calls; every return value must match.
 - Output must match exactly, **including type** (`True` ≠ `1`, list ≠ tuple).
 - Crashes and infinite loops (10s timeout) fail. Some rank 04 subjects also test big inputs for speed.
 - Your `print`s are ignored, and `if __name__ == "__main__":` test code is fine.
@@ -98,7 +99,7 @@ Traces of each attempt are saved in `traces/`.
 ## Adding ranks / questions
 
 ```
-exams/<rankXX>/rank.json                 {"title", "language", "description"}
+exams/<rankXX>/rank.json                 {"title", "language", "description", "final": true for the last rank}
 exams/<rankXX>/level<N>/<question_name>/
     subject.txt   what the student sees
     meta.json     {"name", "file": "<expected file>", ...}

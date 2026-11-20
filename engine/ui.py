@@ -422,6 +422,79 @@ def exam_passed(rank_title, total_time, history):
     show(Panel(body, border_style="green", box=box.DOUBLE, padding=(1, 2)))
 
 
+BIG_42 = [
+    "██╗  ██╗██████╗ ",
+    "██║  ██║╚════██╗",
+    "███████║ █████╔╝",
+    "╚════██║██╔═══╝ ",
+    "     ██║███████╗",
+    "     ╚═╝╚══════╝",
+]
+GOLD = ["#fff3b0", "#ffe066", "#ffd60a", "#ffc300", "#ffaa00", "#ff8800"]
+CONFETTI_COLOURS = ["#ff4d6d", "#ffd60a", "#00e5e8", "#a259ff", "#5ee07a", "#ff8800"]
+
+
+def _confetti(width_chars, rng):
+    t = Text()
+    for _ in range(width_chars):
+        if rng.random() < 0.45:
+            t.append(rng.choice("*+x.o·"), style=f"bold {rng.choice(CONFETTI_COLOURS)}")
+        else:
+            t.append(" ")
+    return t
+
+
+def graduation(rank_title, total_time, history):
+    """Shown once the student passes the LAST rank (rank.json "final": true)."""
+    import random
+    rng = random.Random()
+    w = width() - 8
+    art = Text()
+    for line, colour in zip(BIG_42, GOLD):
+        art.append(line + "\n", style=f"bold {colour}")
+    cap = Text("\n".join([
+        "     _________________________     ",
+        "    /                         \\    ",
+        "   /___________________________\\   ",
+        "       \\                   /  |    ",
+        "        \\   GRADUATED     /   |    ",
+        "         \\_______________/   (#)   ",
+    ]), style="bold white")
+
+    message = Group(
+        Align.center(Text("C O N G R A T U L A T I O N S  !", style="bold #ffd60a")),
+        Text(),
+        Align.center(Text.assemble("You passed ", (rank_title, f"bold {ACCENT}"),
+                                   " - the ", ("LAST", "bold #ff4d6d"), " exam of the 42 curriculum.")),
+        Align.center(Text("Every rank, every level, every grademe: done. You made it all the way!", style="white")),
+        Text(),
+        Align.center(Text.assemble(("score ", "dim"), ("100/100", "bold green"), "   ·   ", ("time ", "dim"),
+                                   (total_time, f"bold {ACCENT}"))),
+    )
+    credit = Group(
+        Rule(style="grey35"),
+        Align.center(Text.assemble((f" {APP_NAME} v{VERSION} ", KEY_TEAL))),
+        Align.center(Text.assemble(("made by ", "dim"), (AUTHOR, f"bold {ACCENT2}"), (" for ", "dim"),
+                                   ("42 Students", "bold white"))),
+        Text(),
+        Align.center(Text("I wish you all the best for what comes next:", style="italic")),
+        Align.center(Text("your internship, your projects and a great career.", style="italic")),
+        Align.center(Text("Keep coding, keep learning, and never stop being curious.", style="italic")),
+        Text(),
+        Align.center(Text.assemble((f"{I['party']}  Good luck, graduate!  {I['party']}", "bold #ffd60a"))),
+    )
+    body = Group(
+        _confetti(w, rng), _confetti(w, rng), Text(),
+        Align.center(art), Align.center(cap), Text(),
+        message, Text(), history_table(history), Text(),
+        credit, Text(),
+        _confetti(w, rng), _confetti(w, rng),
+    )
+    show(Panel(body, border_style="#ffd60a", box=box.DOUBLE, padding=(1, 2),
+               title="[bold #ffd60a] 42 CURRICULUM COMPLETE [/]",
+               subtitle=f"[dim]{APP_NAME} v{VERSION} - {AUTHOR}[/]"))
+
+
 def time_up(rank_title, pts, history):
     body = Group(Align.center(Text(f"{I['alarm']}  T I M E ' S   U P", style="bold red")), Text(),
                  Align.center(Text.assemble((rank_title, "bold"), "   ·   final score ",

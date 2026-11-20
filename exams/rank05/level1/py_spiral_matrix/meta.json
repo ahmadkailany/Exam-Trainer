@@ -1,0 +1,6 @@
+{
+  "name": "py_spiral_matrix",
+  "file": "py_spiral_matrix.py",
+  "function": "generate_spiral",
+  "language": "Python"
+}

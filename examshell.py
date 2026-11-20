@@ -275,7 +275,10 @@ def grademe(state, interactive=True):
         if interactive:
             ui.clear()
         total = ui.fmt_time(elapsed(state)) + (f" of {ui.fmt_time(EXAM_DURATION)}" if mode_of(state) == "exam" else "")
-        ui.exam_passed(rank_title(state), total, state["history"])
+        if rank_info(state["rank"]).get("final"):
+            ui.graduation(rank_title(state), total, state["history"])   # last rank of 42: big celebration
+        else:
+            ui.exam_passed(rank_title(state), total, state["history"])
         clear_state()
         if interactive:
             ui.pause("Press Enter to go back to the main menu")
