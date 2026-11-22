@@ -6,6 +6,51 @@ A practice **examshell** for 42 exams. Questions are picked at random per level;
 you write the solution, type `grademe`, and it is tested against many hidden cases
 (subject examples + edge cases + random cases).
 
+<p align="center">
+  <img src="docs/screenshots/main_menu.svg" alt="Exam Trainer main menu: pick a rank" width="820">
+</p>
+
+## What it looks like
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <b>1. Choose how to practice</b><br>
+      Real exam with a 3 hour timer, a practice exam without timer, or train one exercise.<br><br>
+      <img src="docs/screenshots/mode_menu.svg" alt="Mode menu: exam, practice, train one">
+    </td>
+    <td width="50%" valign="top">
+      <b>2. Read the subject</b><br>
+      Your level, score and the timer stay on top; signature and examples are highlighted.<br><br>
+      <img src="docs/screenshots/subject.svg" alt="Subject screen during an exam">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <b>3. Type <code>grademe</code> - see exactly what failed</b><br>
+      The failing input, the expected output and yours, <code>| cat -e</code> style.<br><br>
+      <img src="docs/screenshots/grademe_failure.svg" alt="grademe failure with expected and actual output">
+    </td>
+    <td width="50%" valign="top">
+      <b>4. Pass it and move to the next level</b><br>
+      Every test passed: congratulations, score and time left, then the next level.<br><br>
+      <img src="docs/screenshots/grademe_success.svg" alt="grademe success">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <b>Train one exercise</b><br>
+      Pick any level and any exercise to practice it on its own.<br><br>
+      <img src="docs/screenshots/train_one.svg" alt="Training mode: choose a level">
+    </td>
+    <td width="50%" valign="top">
+      <b>Pass Rank 06 - you graduated!</b><br>
+      The last exam of the 42 curriculum gets its own celebration.<br><br>
+      <img src="docs/screenshots/graduation.svg" alt="Graduation screen after passing Rank 06">
+    </td>
+  </tr>
+</table>
+
 ## Quick start
 
 Only **Python 3** is needed. Everything else installs itself into a local `.venv`
